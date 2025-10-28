@@ -9,10 +9,14 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    overflow: hidden;
     background-color: #0f0301;
 }
 
 * {
     box-sizing: border-box;
+}
+
+.outline-text {
+    -webkit-text-stroke: 1px var(--color-primary);
+    -webkit-text-fill-color: transparent;
 }

@@ -20,6 +20,10 @@ export default function Hero() {
             animationRef.current.kill()
         }
 
+        gsap.set([firstNameRef.current, lastNameRef.current], {
+            opacity: 0,
+        })
+
         animationRef.current = gsap.context(() => {
             const tl = gsap.timeline({
                 onComplete: () => {
@@ -71,8 +75,12 @@ export default function Hero() {
                 <div
                     className={`text-primary relative text-[20vw] font-bold ${anton.className} flex flex-col items-center justify-center text-center leading-[0.88] uppercase`}
                 >
-                    <span ref={firstNameRef}>Jarvin</span>
-                    <span ref={lastNameRef}>Siegers</span>
+                    <span ref={firstNameRef} style={{ opacity: 0 }}>
+                        Jarvin
+                    </span>
+                    <span ref={lastNameRef} style={{ opacity: 0 }}>
+                        Siegers
+                    </span>
                 </div>
             </div>
         </div>

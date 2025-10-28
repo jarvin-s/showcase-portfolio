@@ -18,6 +18,10 @@ export default function Navbar() {
     const contactRef = useRef(null)
 
     useEffect(() => {
+        gsap.set([homeRef.current, workRef.current, contactRef.current], {
+            opacity: 0,
+        })
+
         const tl = gsap.timeline()
         tl.fromTo(
             [homeRef.current, workRef.current, contactRef.current],
@@ -86,7 +90,7 @@ export default function Navbar() {
 
                 <div className='hidden md:block'>
                     <ul className='flex flex-row items-center gap-6'>
-                        <li ref={homeRef}>
+                        <li ref={homeRef} style={{ opacity: 0 }}>
                             <Link
                                 href='/'
                                 className={`text-primary text-2xl font-bold transition-opacity ${
@@ -100,7 +104,7 @@ export default function Navbar() {
                                 Home
                             </Link>
                         </li>
-                        <li ref={workRef}>
+                        <li ref={workRef} style={{ opacity: 0 }}>
                             <Link
                                 href='/work'
                                 className={`text-primary text-2xl font-bold transition-opacity ${
@@ -117,6 +121,7 @@ export default function Navbar() {
                         <li
                             ref={contactRef}
                             className='flex items-center'
+                            style={{ opacity: 0 }}
                             onMouseEnter={() => setHoveredLink('contact')}
                             onMouseLeave={() => setHoveredLink(null)}
                         >
