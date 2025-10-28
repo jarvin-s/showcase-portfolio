@@ -1,0 +1,42 @@
+[
+    {
+        "title": "aespa",
+        "description": "aespa is a project that I created to help people learn about the basics of programming.",
+        "image": "/images/projects/aespa-project.png",
+        "link": "https://www.aespa.fun",
+        "tags": [
+            "Next.js",
+            "Tailwind CSS",
+            "shadcn/ui",
+            "TypeScript",
+            "Supabase"
+        ]
+    },
+    {
+        "title": "DIVE INTO IVE",
+        "description": "aespa is a project that I created to help people learn about the basics of programming.",
+        "image": "/images/projects/ive-project.png",
+        "link": "https://www.diveintoive.world",
+        "tags": [
+            "Next.js",
+            "Tailwind CSS",
+            "shadcn/ui",
+            "TypeScript",
+            "Supabase"
+        ]
+    },
+    {
+        "title": "IdolGuessr",
+        "description": "IdolGuessr is a project that I created to help people learn about the basics of programming.",
+        "image": "/images/projects/idolguessr-project.png",
+        "link": "https://www.idolguessr.fun",
+        "tags": ["Next.js", "Tailwind CSS", "TypeScript", "Supabase"]
+    },
+    {
+        "title": "Portfolio 2025",
+        "description": "Portfolio 2025 is a project that I created to help people learn about the basics of programming.",
+        "image": "/images/projects/portfolio-project.png",
+        "link": "https://www.jarvin.tech",
+        "tags": ["Next.js", "Tailwind CSS", "TypeScript"]
+    }
+]
