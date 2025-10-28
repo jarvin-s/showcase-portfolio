@@ -1,15 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { Inter_Tight } from 'next/font/google'
 import { useState, useEffect, useRef } from 'react'
 import gsap from 'gsap'
-
-const inter = Inter_Tight({
-    subsets: ['latin'],
-    weight: ['400', '500', '600', '700'],
-    variable: '--font-inter',
-})
 
 export default function Navbar() {
     const navbarRef = useRef(null)
@@ -75,10 +68,7 @@ export default function Navbar() {
     }, [isMenuOpen])
 
     return (
-        <nav
-            ref={navbarRef}
-            className={`fixed top-0 right-0 z-50 p-6 ${inter.className}`}
-        >
+        <nav ref={navbarRef} className={'fixed top-0 right-0 z-50 p-6'}>
             <div className='flex items-center justify-between'>
                 <button
                     onClick={() => setIsMenuOpen(!isMenuOpen)}

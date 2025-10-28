@@ -26,22 +26,22 @@ export default function ProjectPage({ params }: Params) {
                     Project not found
                 </h1>
                 <Link
-                    href='/work'
-                    className='mt-6 inline-block rounded-md bg-white px-4 py-2 text-sm font-medium text-black'
+                    href='/'
+                    className='bg-primary hover:bg-primary/90 rounded-full px-4 py-2 text-xl text-black'
                 >
-                    Back to work
+                    Back to home
                 </Link>
             </section>
         )
     }
 
     return (
-        <section className='mx-auto max-w-5xl px-6 py-16'>
-            <Link href='/work' className='text-white/80 hover:text-white'>
-                ← Back
+        <section className='mx-auto max-w-7xl px-6 py-16'>
+            <Link href='/' className='text-white/80 hover:text-white'>
+                ← Back to home
             </Link>
-            <div className='mt-6 grid grid-cols-1 items-start gap-8 md:grid-cols-2'>
-                <div className='relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5'>
+            <div className='mt-6 flex flex-col items-start gap-8'>
+                <div className='relative aspect-[16/9] w-full overflow-hidden'>
                     <Image
                         src={project.image}
                         alt={project.title}
@@ -53,12 +53,14 @@ export default function ProjectPage({ params }: Params) {
                     <h1 className='text-primary text-4xl font-extrabold'>
                         {project.title}
                     </h1>
-                    <p className='mt-3 text-white/80'>{project.description}</p>
+                    <p className='mt-3 text-lg text-white/80'>
+                        {project.description}
+                    </p>
                     <div className='mt-4 flex flex-wrap gap-2'>
                         {project.tags.map((t) => (
                             <span
                                 key={t}
-                                className='rounded-full border border-white/15 bg-white/10 px-2 py-0.5 text-xs text-white/90'
+                                className='rounded-full border border-white/15 bg-white/10 px-2 py-0.5 text-sm text-white/90'
                             >
                                 {t}
                             </span>
@@ -69,7 +71,7 @@ export default function ProjectPage({ params }: Params) {
                             href={project.link}
                             target='_blank'
                             rel='noreferrer'
-                            className='rounded-md bg-white px-4 py-2 text-sm font-medium text-black hover:bg-white/90'
+                            className='bg-primary hover:bg-primary/90 rounded-full px-4 py-2 text-xl text-black'
                         >
                             Visit project
                         </a>
