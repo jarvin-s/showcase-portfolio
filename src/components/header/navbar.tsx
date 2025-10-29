@@ -2,9 +2,22 @@
 
 import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
 import gsap from 'gsap'
 
 export default function Navbar() {
+    const pathname = usePathname()
+    const router = useRouter()
+    const scrollToId = (id: string) => (e: React.MouseEvent) => {
+        e.preventDefault()
+        setIsMenuOpen(false)
+        if (pathname === '/') {
+            const el = document.getElementById(id)
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        } else {
+            router.push(`/#${id}`)
+        }
+    }
     const navbarRef = useRef(null)
     const homeRef = useRef(null)
     const workRef = useRef(null)
@@ -90,6 +103,7 @@ export default function Navbar() {
                                 }`}
                                 onMouseEnter={() => setHoveredLink('home')}
                                 onMouseLeave={() => setHoveredLink(null)}
+                                onClick={scrollToId('hero')}
                             >
                                 Home
                             </Link>
@@ -104,6 +118,7 @@ export default function Navbar() {
                                 }`}
                                 onMouseEnter={() => setHoveredLink('work')}
                                 onMouseLeave={() => setHoveredLink(null)}
+                                onClick={scrollToId('curious')}
                             >
                                 Work
                             </Link>
@@ -124,6 +139,7 @@ export default function Navbar() {
                                           ? 'bg-primary text-[#0f0f0f]'
                                           : 'text-primary'
                                 }`}
+                                onClick={scrollToId('contact')}
                             >
                                 Contact
                             </Link>
@@ -156,7 +172,7 @@ export default function Navbar() {
                                     ? 'opacity-30'
                                     : ''
                             }`}
-                            onClick={() => setIsMenuOpen(false)}
+                            onClick={scrollToId('hero')}
                             onMouseEnter={() => setHoveredLink('home')}
                             onMouseLeave={() => setHoveredLink(null)}
                         >
@@ -171,7 +187,7 @@ export default function Navbar() {
                                     ? 'opacity-30'
                                     : ''
                             }`}
-                            onClick={() => setIsMenuOpen(false)}
+                            onClick={scrollToId('curious')}
                             onMouseEnter={() => setHoveredLink('work')}
                             onMouseLeave={() => setHoveredLink(null)}
                         >
@@ -186,7 +202,7 @@ export default function Navbar() {
                                     ? 'opacity-30'
                                     : ''
                             }`}
-                            onClick={() => setIsMenuOpen(false)}
+                            onClick={scrollToId('contact')}
                             onMouseEnter={() => setHoveredLink('contact')}
                             onMouseLeave={() => setHoveredLink(null)}
                         >
