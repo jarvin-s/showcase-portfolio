@@ -28,9 +28,9 @@ export const AuroraBackground = ({
                         {
                             '--aurora':
                                 'repeating-linear-gradient(100deg,#3b82f6_10%,#a5b4fc_15%,#93c5fd_20%,#ddd6fe_25%,#60a5fa_30%)',
-                            '--red-300': '#ee7979',
-                            '--red-400': '#f07b7b',
-                            '--red-500': '#ec0f0f',
+                            '--red-300': '#ebd7b6',
+                            '--red-400': '#ffedcf',
+                            '--red-500': '#ffedcf',
                             '--black': '#000',
                             '--white': '#ffffff',
                             '--transparent': 'transparent',
@@ -39,7 +39,7 @@ export const AuroraBackground = ({
                 >
                     <div
                         className={cn(
-                            `after:animate-aurora pointer-events-none absolute -inset-[10px] [background-image:var(--aurora)] [background-size:300%,_200%] [background-position:50%_50%,50%_50%] opacity-50 blur-[10px] invert filter will-change-transform [--aurora:repeating-linear-gradient(160deg,var(--red-500)_10%,var(--red-400)_30%)] after:absolute after:inset-0 after:[background-image:var(--aurora)] after:[background-size:200%,_100%] after:[background-attachment:fixed] after:mix-blend-difference after:content-[""] dark:invert-0`,
+                            `after:animate-aurora pointer-events-none absolute -inset-[10px] [background-image:var(--white-gradient),var(--aurora)] [background-size:300%,_200%] [background-position:50%_50%,50%_50%] opacity-50 blur-[10px] invert filter will-change-transform [--aurora:repeating-linear-gradient(160deg,var(--red-500)_10%,var(--red-400)_30%)] [--white-gradient:repeating-linear-gradient(100deg,var(--white)_0%,var(--white)_4%,var(--transparent)_10%,var(--transparent)_12%,var(--white)_16%)] after:absolute after:inset-0 after:[background-image:var(--white-gradient),var(--aurora)] after:[background-size:200%,_100%] after:[background-attachment:fixed] after:mix-blend-difference after:content-[""] dark:[background-image:var(--dark-gradient),var(--aurora)] dark:invert-0 after:dark:[background-image:var(--dark-gradient),var(--aurora)]`,
 
                             showRadialGradient &&
                                 `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`
