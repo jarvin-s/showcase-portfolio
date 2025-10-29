@@ -1,7 +1,26 @@
 @import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
 
 @theme {
     --color-primary: #ffedcf;
+}
+
+@theme inline {
+    --animate-aurora: aurora 60s linear infinite;
+    @keyframes aurora {
+        from {
+            background-position:
+                50% 50%,
+                50% 50%;
+        }
+        to {
+            background-position:
+                350% 50%,
+                350% 50%;
+        }
+    }
 }
 
 html,
