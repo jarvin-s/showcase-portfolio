@@ -1,35 +1,25 @@
-# Next.js Boilerplate
+# Showcase Portfolio - Jarvin Siegers
 
-This is a simple Next.js Boilerplate to help you get started with building your web applications, featuring Tailwind CSS, Prettier, and Prettier Tailwind CSS with the default font set to Inter Tight.
+# Design Process
 
-## Getting Started
+Current trends
+I browse [Awwwards](awwwards.com) regularly, I try to get inspired and copy trends I see on there. In my opinion, this website is all you need, endless examples of professional work for enough inspiration for all your work.
 
-1. **Clone the repository:**
+99% of websites that have awards use GSAP for their animations and Lenis for smooth scroll. Many websites also love to use big text on their hero section, instantly grabbing the users attention.
 
-    ```bash
-    git clone https://github.com/yourusername/nextjs-starter-template.git
-    cd nextjs-starter-template
-    ```
+**Portfolio Inspiration**
 
-2. **Install dependencies:**
+Below are some portfolios I used for inspiration:
 
-    ```bash
-    npm install
-    ```
+- [15th Plus Studio](https://15th.plus-ex.com/)
+- [Stella Petkova](https://www.stellapetkova.com/)
+- [Olha Lazarieva](https://www.olhalazarieva.com/)
+- [Wonjyou Studio](https://wonjyou.studio/)
+- [Wonjyou](https://www.wonjyou.com/)
 
-3. **Run the development server:**
+## Tech Stack
 
-    ```bash
-    npm run dev
-    ```
-
-4. **Open your browser:**
-   Navigate to `http://localhost:3000` to see your application in action.
-
-## Deployment
-
-To deploy your application, you can use platforms like Vercel or Netlify. Follow their documentation for deployment instructions.
-
-## License
-
-This project is licensed under the MIT License.
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white) 
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
