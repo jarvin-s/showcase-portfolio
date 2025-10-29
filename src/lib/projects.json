@@ -1,7 +1,7 @@
 [
     {
-        "title": "aespa",
-        "description": "aespa is a project that I created to help people learn about the basics of programming.",
+        "title": "aespa.fun",
+        "description": "aespa.fun is an interactive web app where users can do quizzes about aespa and collect photocards.",
         "image": "/images/projects/aespa-project.png",
         "link": "https://www.aespa.fun",
         "tags": [
@@ -14,7 +14,7 @@
     },
     {
         "title": "DIVE INTO IVE",
-        "description": "aespa is a project that I created to help people learn about the basics of programming.",
+        "description": "DIVE INTO IVE ",
         "image": "/images/projects/ive-project.png",
         "link": "https://www.diveintoive.world",
         "tags": [
@@ -27,14 +27,14 @@
     },
     {
         "title": "IdolGuessr",
-        "description": "IdolGuessr is a project that I created to help people learn about the basics of programming.",
+        "description": "Guess the Idol - A fun web game where K-pop fans test their knowledge by guessing idols from pixelated photos.",
         "image": "/images/projects/idolguessr-project.png",
         "link": "https://www.idolguessr.fun",
         "tags": ["Next.js", "Tailwind CSS", "TypeScript", "Supabase"]
     },
     {
-        "title": "Portfolio 2025",
-        "description": "Portfolio 2025 is a project that I created to help people learn about the basics of programming.",
+        "title": "Portfolio Media S2",
+        "description": "Portfolio for Media in the second semester",
         "image": "/images/projects/portfolio-project.png",
         "link": "https://www.jarvin.tech",
         "tags": ["Next.js", "Tailwind CSS", "TypeScript"]

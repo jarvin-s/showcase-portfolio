@@ -4,6 +4,7 @@ import { Anton } from 'next/font/google'
 import projects from '@/lib/projects.json'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { slugify } from '@/lib/utils'
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
@@ -24,11 +25,12 @@ const anton = Anton({
 })
 
 const Curious = () => {
+    const router = useRouter()
     const fixedPositions: Array<Record<string, string>> = [
         { top: '120px', left: '200px' },
         { bottom: '120px', left: '120px' },
         { top: '120px', right: '200px' },
-        { bottom: '40px', right: '195px' },
+        { bottom: '207px', right: '306px' },
     ]
 
     const containerRef = useRef<HTMLDivElement>(null)
@@ -50,7 +52,7 @@ const Curious = () => {
                 y: 20,
                 scale: 0.95,
                 ease: 'power2.out',
-                stagger: 0.15,
+                stagger: 0.1,
                 scrollTrigger: {
                     trigger: el,
                     start: 'top 50%',
@@ -84,7 +86,7 @@ const Curious = () => {
                     {(projects as Project[]).slice(0, 4).map((project, i) => (
                         <div
                             key={project.title}
-                            className='project-pin group absolute'
+                            className='project-pin group absolute z-30'
                             style={
                                 fixedPositions[i] || { top: '50%', left: '50%' }
                             }
@@ -103,6 +105,67 @@ const Curious = () => {
                             <Link
                                 href={`/work/${slugify(project.title)}`}
                                 aria-label={`View ${project.title}`}
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    const wrapper =
+                                        e.currentTarget as HTMLAnchorElement
+                                    const img = wrapper.querySelector(
+                                        'img'
+                                    ) as HTMLImageElement | null
+                                    if (!img) {
+                                        router.push(
+                                            `/work/${slugify(project.title)}`
+                                        )
+                                        return
+                                    }
+
+                                    const rect = img.getBoundingClientRect()
+                                    const overlay =
+                                        document.createElement('img')
+
+                                    overlay.src = project.image
+                                    overlay.alt = project.title
+                                    Object.assign(overlay.style, {
+                                        position: 'fixed',
+                                        top: `${rect.top}px`,
+                                        left: `${rect.left}px`,
+                                        width: `${rect.width}px`,
+                                        height: `${rect.height}px`,
+                                        objectFit: 'cover',
+                                        borderRadius:
+                                            getComputedStyle(img)
+                                                .borderRadius || '12px',
+                                        zIndex: '999',
+                                        imageRendering: 'high-quality',
+                                    })
+                                    document.body.appendChild(overlay)
+
+                                    const maxWidth = Math.min(
+                                        window.innerWidth - 48,
+                                        1280
+                                    )
+                                    const finalHeight = maxWidth * (9 / 16)
+
+                                    gsap.to(overlay, {
+                                        top: '50%',
+                                        left: '50%',
+                                        width: maxWidth,
+                                        height: finalHeight,
+                                        x: '-50%',
+                                        y: '-50%',
+                                        duration: 0.55,
+                                        ease: 'power3.inOut',
+                                        onComplete: () => {
+                                            router.push(
+                                                `/work/${slugify(project.title)}`
+                                            )
+                                            setTimeout(
+                                                () => overlay.remove(),
+                                                400
+                                            )
+                                        },
+                                    })
+                                }}
                             >
                                 <Image
                                     src={project.image}
@@ -138,11 +201,13 @@ const Curious = () => {
                     className={`curious-text w-full max-w-[800px] ${anton.className}`}
                 >
                     <div
-                        className={`relative z-20 grid grid-cols-2 text-center uppercase`}
+                        className={`relative grid grid-cols-2 text-center uppercase`}
                     >
                         <div className='col-span-1'>
-                            <h2 className='outline-text text-primary text-[12vw] font-bold md:text-[8.5vw]'>
-                                Curious
+                            <h2 className='text-primary text-[12vw] font-bold md:text-[8.5vw]'>
+                                <span className='bg-primary px-[3rem] text-[#0f0301]'>
+                                    Curious
+                                </span>
                             </h2>
                         </div>
                         <div className='col-span-1' />
