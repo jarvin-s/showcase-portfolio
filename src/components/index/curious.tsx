@@ -2,7 +2,8 @@
 
 import { Anton } from 'next/font/google'
 import projects from '@/lib/projects.json'
-import Image from 'next/image'
+// Image import no longer used directly; using ImageHover
+import { ImageHover } from '@/components/ui/image-hover'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { slugify } from '@/lib/utils'
@@ -28,9 +29,9 @@ const Curious = () => {
     const router = useRouter()
     const fixedPositions: Array<Record<string, string>> = [
         { top: '120px', left: '200px' },
-        { bottom: '120px', left: '120px' },
+        { bottom: '100px', left: '120px' },
         { top: '120px', right: '200px' },
-        { bottom: '207px', right: '306px' },
+        { bottom: '107px', right: '306px' },
     ]
 
     const containerRef = useRef<HTMLDivElement>(null)
@@ -52,17 +53,18 @@ const Curious = () => {
                 y: 20,
                 scale: 0.95,
                 ease: 'power2.out',
-                stagger: 0.1,
+                stagger: 0.05,
                 scrollTrigger: {
                     trigger: el,
-                    start: 'top 50%',
+                    start: 'top 80%',
                     scrub: true,
                 },
             })
 
             gsap.from('.curious-text h2', {
                 opacity: 0,
-                y: 40,
+                y: -80,
+                x: 100,
                 ease: 'power2.out',
                 stagger: 0.12,
                 scrollTrigger: {
@@ -113,6 +115,7 @@ const Curious = () => {
                                         'img'
                                     ) as HTMLImageElement | null
                                     if (!img) {
+                                        window.scrollTo(0, 0)
                                         router.push(
                                             `/work/${slugify(project.title)}`
                                         )
@@ -125,6 +128,14 @@ const Curious = () => {
 
                                     overlay.src = project.image
                                     overlay.alt = project.title
+                                    overlay.setAttribute(
+                                        'data-project-overlay',
+                                        'true'
+                                    )
+                                    overlay.setAttribute(
+                                        'data-project-slug',
+                                        slugify(project.title)
+                                    )
                                     Object.assign(overlay.style, {
                                         position: 'fixed',
                                         top: `${rect.top}px`,
@@ -141,8 +152,8 @@ const Curious = () => {
                                     document.body.appendChild(overlay)
 
                                     const maxWidth = Math.min(
-                                        window.innerWidth - 48,
-                                        1280
+                                        1280,
+                                        window.innerWidth - 48
                                     )
                                     const finalHeight = maxWidth * (9 / 16)
 
@@ -153,28 +164,28 @@ const Curious = () => {
                                         height: finalHeight,
                                         x: '-50%',
                                         y: '-50%',
-                                        duration: 0.55,
-                                        ease: 'power3.inOut',
+                                        duration: 1.55,
+                                        ease: 'power2.out',
                                         onComplete: () => {
+                                            window.scrollTo(0, 0)
                                             router.push(
                                                 `/work/${slugify(project.title)}`
-                                            )
-                                            setTimeout(
-                                                () => overlay.remove(),
-                                                400
                                             )
                                         },
                                     })
                                 }}
                             >
-                                <Image
-                                    src={project.image}
-                                    alt={project.title}
-                                    width={400}
-                                    height={400}
-                                    className='project-image cursor-pointer rounded-md'
-                                    priority={i === 0}
-                                />
+                                <div className='relative h-[400px] w-[400px]'>
+                                    <ImageHover
+                                        src={project.image}
+                                        alt={project.title}
+                                        width={400}
+                                        height={400}
+                                        className='project-image rounded-md object-cover'
+                                        movementIntensity={20}
+                                        priority={i === 0}
+                                    />
+                                </div>
                             </Link>
                         </div>
                     ))}
@@ -204,10 +215,8 @@ const Curious = () => {
                         className={`relative grid grid-cols-2 text-center uppercase`}
                     >
                         <div className='col-span-1'>
-                            <h2 className='text-primary text-[12vw] font-bold md:text-[8.5vw]'>
-                                <span className='bg-primary px-[3rem] text-[#0f0301]'>
-                                    Curious
-                                </span>
+                            <h2 className='outline-text text-primary text-[12vw] font-bold md:text-[8.5vw]'>
+                                Curious
                             </h2>
                         </div>
                         <div className='col-span-1' />

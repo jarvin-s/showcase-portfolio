@@ -40,34 +40,6 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-.project-image {
-    animation-name: floating;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in;
-    animation-direction: alternate;
-}
-@keyframes floating {
-    0% {
-        transform: translate(0px, 0px);
-    }
-    20% {
-        transform: translate(-2.5px, 1.5px);
-    }
-    40% {
-        transform: translate(-1.5px, 2.5px);
-    }
-    60% {
-        transform: translate(1.5px, 2.5px);
-    }
-    80% {
-        transform: translate(2.5px, -1.5px);
-    }
-    100% {
-        transform: translate(-2.5px, -2.5px);
-    }
-}
-
 .project-image:hover {
     cursor: none;
 }
