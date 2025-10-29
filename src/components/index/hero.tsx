@@ -3,6 +3,7 @@
 import { Anton } from 'next/font/google'
 import gsap from 'gsap'
 import { useEffect, useRef } from 'react'
+import { AuroraBackground } from '../ui/aurora-background'
 
 const anton = Anton({
     subsets: ['latin'],
@@ -70,19 +71,23 @@ export default function Hero() {
     }, [])
 
     return (
-        <div className='relative h-screen'>
-            <div className='z-10 flex h-full w-full flex-col items-center justify-center'>
-                <div
-                    className={`text-primary relative text-[20vw] font-bold ${anton.className} flex flex-col items-center justify-center text-center leading-[0.88] uppercase`}
-                >
-                    <span ref={firstNameRef} style={{ opacity: 0 }}>
-                        Jarvin
-                    </span>
-                    <span ref={lastNameRef} style={{ opacity: 0 }}>
-                        Siegers
-                    </span>
+        <>
+            <AuroraBackground>
+                <div className='relative h-screen'>
+                    <div className='z-10 flex h-full w-full flex-col items-center justify-center'>
+                        <div
+                            className={`text-primary relative text-[20vw] font-bold ${anton.className} flex flex-col items-center justify-center text-center leading-[0.88] uppercase`}
+                        >
+                            <span ref={firstNameRef} style={{ opacity: 0 }}>
+                                Jarvin
+                            </span>
+                            <span ref={lastNameRef} style={{ opacity: 0 }}>
+                                Siegers
+                            </span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </AuroraBackground>
+        </>
     )
 }

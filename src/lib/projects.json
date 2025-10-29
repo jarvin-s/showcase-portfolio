@@ -1,0 +1,42 @@
+[
+    {
+        "title": "aespa.fun",
+        "description": "aespa.fun is an interactive web app where users can do quizzes about aespa and collect photocards.",
+        "image": "/images/projects/aespa-project.png",
+        "link": "https://www.aespa.fun",
+        "tags": [
+            "Next.js",
+            "Tailwind CSS",
+            "shadcn/ui",
+            "TypeScript",
+            "Supabase"
+        ]
+    },
+    {
+        "title": "DIVE INTO IVE",
+        "description": "DIVE INTO IVE is a web app where users can do quizzes about IVE and compete for a place on the leaderboard. ",
+        "image": "/images/projects/ive-project.png",
+        "link": "https://www.diveintoive.world",
+        "tags": [
+            "Next.js",
+            "Tailwind CSS",
+            "shadcn/ui",
+            "TypeScript",
+            "Supabase"
+        ]
+    },
+    {
+        "title": "IdolGuessr",
+        "description": "Guess the Idol - A fun web game where K-pop fans test their knowledge by guessing idols from pixelated photos.",
+        "image": "/images/projects/idolguessr-project.png",
+        "link": "https://www.idolguessr.fun",
+        "tags": ["Next.js", "Tailwind CSS", "TypeScript", "Supabase"]
+    },
+    {
+        "title": "Portfolio Media S2",
+        "description": "Portfolio for Media in the second semester",
+        "image": "/images/projects/portfolio-project.png",
+        "link": "https://www.jarvin.tech",
+        "tags": ["Next.js", "Tailwind CSS", "TypeScript"]
+    }
+]
