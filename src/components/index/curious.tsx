@@ -2,7 +2,6 @@
 
 import { Anton } from 'next/font/google'
 import projects from '@/lib/projects.json'
-// Image import no longer used directly; using ImageHover
 import { ImageHover } from '@/components/ui/image-hover'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -56,7 +55,7 @@ const Curious = () => {
                 stagger: 0.05,
                 scrollTrigger: {
                     trigger: el,
-                    start: 'top 80%',
+                    start: 'top 100%',
                     scrub: true,
                 },
             })
@@ -64,12 +63,23 @@ const Curious = () => {
             gsap.from('.curious-text h2', {
                 opacity: 0,
                 y: -80,
-                x: 100,
                 ease: 'power2.out',
-                stagger: 0.12,
+                stagger: 0.05,
                 scrollTrigger: {
                     trigger: el,
-                    start: 'top 80%',
+                    start: 'top 100%',
+                    scrub: true,
+                },
+            })
+
+            gsap.from('.project-pin-mobile', {
+                opacity: 0,
+                ease: 'power2.out',
+                x: 30,
+                stagger: 0.15,
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 40%',
                     scrub: true,
                 },
             })
@@ -81,10 +91,12 @@ const Curious = () => {
     return (
         <>
             <div
+                id='curious'
                 ref={containerRef}
-                className='relative flex h-screen w-full items-center justify-center'
+                className='relative flex h-screen w-full flex-col items-center justify-center px-4'
             >
-                <div className='absolute inset-0'>
+                {/* Desktop View */}
+                <div className='absolute inset-0 hidden lg:block'>
                     {(projects as Project[]).slice(0, 4).map((project, i) => (
                         <div
                             key={project.title}
@@ -123,6 +135,20 @@ const Curious = () => {
                                     }
 
                                     const rect = img.getBoundingClientRect()
+
+                                    const bg = document.createElement('div')
+                                    bg.setAttribute('data-route-bg', 'true')
+                                    Object.assign(bg.style, {
+                                        position: 'fixed',
+                                        inset: '0px',
+                                        background: '#ffedcf',
+                                        transformOrigin: 'bottom',
+                                        transform: 'scaleY(0)',
+                                        zIndex: '40',
+                                        pointerEvents: 'none',
+                                    })
+                                    document.body.appendChild(bg)
+
                                     const overlay =
                                         document.createElement('img')
 
@@ -157,25 +183,34 @@ const Curious = () => {
                                     )
                                     const finalHeight = maxWidth * (9 / 16)
 
-                                    gsap.to(overlay, {
-                                        top: '50%',
-                                        left: '50%',
-                                        width: maxWidth,
-                                        height: finalHeight,
-                                        x: '-50%',
-                                        y: '-50%',
-                                        duration: 1.55,
-                                        ease: 'power2.out',
-                                        onComplete: () => {
-                                            window.scrollTo(0, 0)
-                                            router.push(
-                                                `/work/${slugify(project.title)}`
-                                            )
+                                    const tl = gsap.timeline()
+                                    tl.to(bg, {
+                                        scaleY: 1,
+                                        duration: 0.6,
+                                        ease: 'power3.out',
+                                    }).to(
+                                        overlay,
+                                        {
+                                            top: '50%',
+                                            left: '50%',
+                                            width: maxWidth,
+                                            height: finalHeight,
+                                            x: '-50%',
+                                            y: '-50%',
+                                            duration: 1.0,
+                                            ease: 'power2.out',
+                                            onComplete: () => {
+                                                window.scrollTo(0, 0)
+                                                router.push(
+                                                    `/work/${slugify(project.title)}`
+                                                )
+                                            },
                                         },
-                                    })
+                                        '-=0.2'
+                                    )
                                 }}
                             >
-                                <div className='relative h-[400px] w-[400px]'>
+                                <div className='relative h-[200px] w-[400px]'>
                                     <ImageHover
                                         src={project.image}
                                         alt={project.title}
@@ -212,38 +247,135 @@ const Curious = () => {
                     className={`curious-text w-full max-w-[800px] ${anton.className}`}
                 >
                     <div
-                        className={`relative grid grid-cols-2 text-center uppercase`}
+                        className={`relative grid grid-cols-1 text-center uppercase lg:grid-cols-2`}
                     >
                         <div className='col-span-1'>
-                            <h2 className='outline-text text-primary text-[12vw] font-bold md:text-[8.5vw]'>
+                            <h2 className='outline-text text-primary text-[80px] font-bold md:text-[8.5vw]'>
                                 Curious
                             </h2>
                         </div>
                         <div className='col-span-1' />
                     </div>
-                    <div className={`grid grid-cols-2 text-center uppercase`}>
+                    <div
+                        className={`grid grid-cols-1 text-center uppercase lg:grid-cols-2`}
+                    >
                         <div className='col-span-1' />
                         <div className='col-span-1'>
-                            <h2 className='text-primary text-[12vw] font-bold md:text-[8.5vw]'>
+                            <h2 className='text-primary text-[80px] font-bold md:text-[8.5vw]'>
                                 about
                             </h2>
                         </div>
                     </div>
-                    <div className={`grid grid-cols-2 text-center uppercase`}>
+                    <div
+                        className={`grid grid-cols-1 text-center uppercase lg:grid-cols-2`}
+                    >
                         <div className='col-span-1'>
-                            <h2 className='text-primary text-[12vw] font-bold md:text-[8.5vw]'>
+                            <h2 className='text-primary text-[80px] font-bold md:text-[8.5vw]'>
                                 my
                             </h2>
                         </div>
                         <div className='col-span-1' />
                     </div>
-                    <div className={`grid grid-cols-2 text-center uppercase`}>
+                    <div
+                        className={`grid grid-cols-1 text-center uppercase lg:grid-cols-2`}
+                    >
                         <div className='col-span-1' />
                         <div className='col-span-1'>
-                            <h2 className='text-primary text-[12vw] font-bold md:text-[8.5vw]'>
+                            <h2 className='text-primary text-[80px] font-bold md:text-[8.5vw]'>
                                 <span className='outline-text'>work</span>?
                             </h2>
                         </div>
+                    </div>
+                    {/* Mobile View */}
+                    <div className='flex flex-col gap-6 lg:hidden'>
+                        {(projects as Project[])
+                            .slice(0, 4)
+                            .map((project, i) => (
+                                <Link
+                                    key={project.title}
+                                    href={`/work/${slugify(project.title)}`}
+                                    aria-label={`View ${project.title}`}
+                                    className='project-pin-mobile'
+                                    onClick={(e) => {
+                                        e.preventDefault()
+                                        const wrapper =
+                                            e.currentTarget as HTMLAnchorElement
+                                        const img = wrapper.querySelector(
+                                            'img'
+                                        ) as HTMLImageElement | null
+                                        if (!img) {
+                                            window.scrollTo(0, 0)
+                                            router.push(
+                                                `/work/${slugify(project.title)}`
+                                            )
+                                            return
+                                        }
+
+                                        const rect = img.getBoundingClientRect()
+                                        const overlay =
+                                            document.createElement('img')
+
+                                        overlay.src = project.image
+                                        overlay.alt = project.title
+                                        overlay.setAttribute(
+                                            'data-project-overlay',
+                                            'true'
+                                        )
+                                        overlay.setAttribute(
+                                            'data-project-slug',
+                                            slugify(project.title)
+                                        )
+                                        Object.assign(overlay.style, {
+                                            position: 'fixed',
+                                            top: `${rect.top}px`,
+                                            left: `${rect.left}px`,
+                                            width: `${rect.width}px`,
+                                            height: `${rect.height}px`,
+                                            objectFit: 'cover',
+                                            borderRadius:
+                                                getComputedStyle(img)
+                                                    .borderRadius || '12px',
+                                            zIndex: '999',
+                                            imageRendering: 'high-quality',
+                                        })
+                                        document.body.appendChild(overlay)
+
+                                        const maxWidth = Math.min(
+                                            1280,
+                                            window.innerWidth - 48
+                                        )
+                                        const finalHeight = maxWidth * (9 / 16)
+
+                                        gsap.to(overlay, {
+                                            top: '50%',
+                                            left: '50%',
+                                            width: maxWidth,
+                                            height: finalHeight,
+                                            x: '-50%',
+                                            y: '-50%',
+                                            duration: 1.55,
+                                            ease: 'power2.out',
+                                            onComplete: () => {
+                                                window.scrollTo(0, 0)
+                                                router.push(
+                                                    `/work/${slugify(project.title)}`
+                                                )
+                                            },
+                                        })
+                                    }}
+                                >
+                                    <div className='relative aspect-[16/9] w-full overflow-hidden rounded-md'>
+                                        <ImageHover
+                                            src={project.image}
+                                            alt={project.title}
+                                            fill
+                                            className='project-image rounded-md object-cover'
+                                            movementIntensity={20}
+                                            priority={i === 0}
+                                        />
+                                    </div>
+                                </Link>
+                            ))}
                     </div>
                 </div>
             </div>
