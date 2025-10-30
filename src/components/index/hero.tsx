@@ -76,7 +76,7 @@ export default function Hero() {
                 <div className='relative h-screen'>
                     <div className='z-10 flex h-full w-full flex-col items-center justify-center'>
                         <div
-                            className={`text-primary relative text-[20vw] font-bold ${anton.className} flex flex-col items-center justify-center text-center leading-[0.88] uppercase`}
+                            className={`text-primary relative text-[120px] md:text-[20vw] ${anton.className} flex flex-col items-center justify-center text-center leading-[0.88] uppercase`}
                         >
                             <span ref={firstNameRef} style={{ opacity: 0 }}>
                                 Jarvin

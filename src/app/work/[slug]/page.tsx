@@ -11,6 +11,7 @@ import Spacer from '@/components/common/spacer'
 type Project = {
     title: string
     description: string
+    description2: string
     image: string
     link: string
     tags: string[]
@@ -26,6 +27,7 @@ export default function ProjectPage({
     const imageRef = useRef<HTMLDivElement | null>(null)
     const titleRef = useRef<HTMLHeadingElement | null>(null)
     const descriptionRef = useRef<HTMLParagraphElement | null>(null)
+    const description2Ref = useRef<HTMLParagraphElement | null>(null)
     const tagsRef = useRef<HTMLDivElement | null>(null)
     const buttonRef = useRef<HTMLAnchorElement | null>(null)
     const animationRef = useRef<gsap.Context | null>(null)
@@ -43,7 +45,12 @@ export default function ProjectPage({
 
             if (overlay && imageRef.current) {
                 const imageRect = imageRef.current.getBoundingClientRect()
-
+                const bg = document.querySelector(
+                    '[data-route-bg="true"]'
+                ) as HTMLDivElement | null
+                if (bg) {
+                    bg.style.transformOrigin = 'top'
+                }
                 gsap.to(overlay, {
                     top: `${imageRect.top}px`,
                     left: `${imageRect.left}px`,
@@ -57,6 +64,14 @@ export default function ProjectPage({
                     onComplete: () => {
                         setTimeout(() => {
                             overlay.remove()
+                            if (bg) {
+                                gsap.to(bg, {
+                                    scaleY: 0,
+                                    duration: 0.6,
+                                    ease: 'power2.inOut',
+                                    onComplete: () => bg.remove(),
+                                })
+                            }
                             if (animationRef.current) {
                                 animationRef.current.kill()
                             }
@@ -65,6 +80,18 @@ export default function ProjectPage({
                     },
                 })
             } else {
+                const bg = document.querySelector(
+                    '[data-route-bg="true"]'
+                ) as HTMLDivElement | null
+                if (bg) {
+                    bg.style.transformOrigin = 'top'
+                    gsap.to(bg, {
+                        scaleY: 0,
+                        duration: 0.6,
+                        ease: 'power2.inOut',
+                        onComplete: () => bg.remove(),
+                    })
+                }
                 startPageAnimations()
             }
         }
@@ -81,6 +108,7 @@ export default function ProjectPage({
                     imageRef.current,
                     titleRef.current,
                     descriptionRef.current,
+                    description2Ref.current,
                     buttonRef.current,
                 ],
                 { opacity: 0 }
@@ -88,6 +116,8 @@ export default function ProjectPage({
             if (titleRef.current) gsap.set(titleRef.current, { y: 30 })
             if (descriptionRef.current)
                 gsap.set(descriptionRef.current, { y: 20 })
+            if (description2Ref.current)
+                gsap.set(description2Ref.current, { y: 20 })
             if (tagsRef.current)
                 gsap.set(tagsRef.current.querySelectorAll('.project-tag'), {
                     opacity: 0,
@@ -117,6 +147,11 @@ export default function ProjectPage({
                     )
                     .to(
                         descriptionRef.current,
+                        { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
+                        '-=0.35'
+                    )
+                    .to(
+                        description2Ref.current,
                         { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
                         '-=0.35'
                     )
@@ -160,11 +195,11 @@ export default function ProjectPage({
     }
 
     return (
-        <section ref={containerRef} className='mx-auto max-w-7xl px-6 py-16'>
+        <section ref={containerRef} className='mx-auto max-w-6xl px-6 py-16'>
             <div className='mt-6 flex flex-col items-start gap-8'>
                 <div
                     ref={imageRef}
-                    className='project-image-wrapper relative aspect-[16/9] w-full overflow-hidden'
+                    className='project-image-wrapper relative z-50 aspect-[16/9] w-full overflow-hidden'
                     style={{ opacity: 0, visibility: 'hidden' }}
                 >
                     <ImageHover
@@ -189,6 +224,13 @@ export default function ProjectPage({
                         style={{ opacity: 0 }}
                     >
                         {project.description}
+                    </p>
+                    <p
+                        ref={description2Ref}
+                        className='project-description2 mt-3 text-lg text-white/80'
+                        style={{ opacity: 0 }}
+                    >
+                        {project.description2}
                     </p>
                     <div ref={tagsRef} className='mt-4 flex flex-wrap gap-2'>
                         {project.tags.map((t) => (

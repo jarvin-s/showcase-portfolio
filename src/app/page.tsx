@@ -6,11 +6,17 @@ import Hero from '@/components/index/hero'
 export default function Home() {
     return (
         <>
-            <Hero />
+            <div id='hero'>
+                <Hero />
+            </div>
             <Spacer />
-            <Curious />
+            <div id='curious'>
+                <Curious />
+            </div>
             <Spacer />
-            <Contact />
+            <div id='contact'>
+                <Contact />
+            </div>
         </>
     )
 }

@@ -14,7 +14,7 @@
     },
     {
         "title": "DIVE INTO IVE",
-        "description": "DIVE INTO IVE is a web app where users can do quizzes about IVE and compete for a place on the leaderboard. ",
+        "description": "DIVE INTO IVE is a web app where users can do quizzes about IVE and compete for a place on the leaderboard. One of my first big hobby projects. I started this project because after doing some research, I couldn't really many kpop fan-made websites, so I thought this is the perfect opportunity.",
         "image": "/images/projects/ive-project.png",
         "link": "https://www.diveintoive.world",
         "tags": [
@@ -27,7 +27,8 @@
     },
     {
         "title": "IdolGuessr",
-        "description": "Guess the Idol - A fun web game where K-pop fans test their knowledge by guessing idols from pixelated photos.",
+        "description": "Guess the Idol - A fun web game where K-pop fans test their knowledge by guessing idols from pixelated photos. A very recent project that started from another pixelated photo guessing game called Nearsight (nearsight.cc).",
+        "description2": "A good friend of mine and I got together and built the first version in a week. We are currently working on an unlimited game mode where users can keep guessing idols instead of doing one per day.",
         "image": "/images/projects/idolguessr-project.png",
         "link": "https://www.idolguessr.fun",
         "tags": ["Next.js", "Tailwind CSS", "TypeScript", "Supabase"]
@@ -35,8 +36,9 @@
     {
         "title": "Portfolio Media S2",
         "description": "Portfolio for Media in the second semester",
+        "description2": "The portfolio from my second semester at Fontys University. This portfolio was specifically for teachers. It included all the learning outcomes and evidence for each one of them. My goal was similar to this one, to build a minimalistic, but modern looking portfolio. With the focus mainly being animations by using popular tools like GSAP.",
         "image": "/images/projects/portfolio-project.png",
-        "link": "https://www.jarvin.tech",
+        "link": "https://www.portfolio-jarvin.vercel.app",
         "tags": ["Next.js", "Tailwind CSS", "TypeScript"]
     }
 ]
