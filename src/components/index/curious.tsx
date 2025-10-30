@@ -88,6 +88,80 @@ const Curious = () => {
         return () => ctx.revert()
     }, [])
 
+    const navigateWithOverlay = (
+        e: React.MouseEvent<HTMLAnchorElement>,
+        project: Project
+    ) => {
+        e.preventDefault()
+        const wrapper = e.currentTarget as HTMLAnchorElement
+        const img = wrapper.querySelector('img') as HTMLImageElement | null
+        if (!img) {
+            window.scrollTo(0, 0)
+            router.push(`/work/${slugify(project.title)}`)
+            return
+        }
+
+        const rect = img.getBoundingClientRect()
+
+        const bg = document.createElement('div')
+        bg.setAttribute('data-route-bg', 'true')
+        Object.assign(bg.style, {
+            position: 'fixed',
+            inset: '0px',
+            background: '#ffedcf',
+            transformOrigin: 'bottom',
+            transform: 'scaleY(0)',
+            zIndex: '40',
+            pointerEvents: 'none',
+        })
+        document.body.appendChild(bg)
+
+        const overlay = document.createElement('img')
+        overlay.src = project.image
+        overlay.alt = project.title
+        overlay.setAttribute('data-project-overlay', 'true')
+        overlay.setAttribute('data-project-slug', slugify(project.title))
+        Object.assign(overlay.style, {
+            position: 'fixed',
+            top: `${rect.top}px`,
+            left: `${rect.left}px`,
+            width: `${rect.width}px`,
+            height: `${rect.height}px`,
+            objectFit: 'cover',
+            borderRadius: getComputedStyle(img).borderRadius || '12px',
+            zIndex: '999',
+            imageRendering: 'high-quality',
+        })
+        document.body.appendChild(overlay)
+
+        const maxWidth = Math.min(1280, window.innerWidth - 48)
+        const finalHeight = maxWidth * (9 / 16)
+
+        const tl = gsap.timeline()
+        tl.to(bg, {
+            scaleY: 1,
+            duration: 0.6,
+            ease: 'power3.out',
+        }).to(
+            overlay,
+            {
+                top: '50%',
+                left: '50%',
+                width: maxWidth,
+                height: finalHeight,
+                x: '-50%',
+                y: '-50%',
+                duration: 1.0,
+                ease: 'power2.out',
+                onComplete: () => {
+                    window.scrollTo(0, 0)
+                    router.push(`/work/${slugify(project.title)}`)
+                },
+            },
+            '-=0.2'
+        )
+    }
+
     return (
         <>
             <div
@@ -119,96 +193,7 @@ const Curious = () => {
                             <Link
                                 href={`/work/${slugify(project.title)}`}
                                 aria-label={`View ${project.title}`}
-                                onClick={(e) => {
-                                    e.preventDefault()
-                                    const wrapper =
-                                        e.currentTarget as HTMLAnchorElement
-                                    const img = wrapper.querySelector(
-                                        'img'
-                                    ) as HTMLImageElement | null
-                                    if (!img) {
-                                        window.scrollTo(0, 0)
-                                        router.push(
-                                            `/work/${slugify(project.title)}`
-                                        )
-                                        return
-                                    }
-
-                                    const rect = img.getBoundingClientRect()
-
-                                    const bg = document.createElement('div')
-                                    bg.setAttribute('data-route-bg', 'true')
-                                    Object.assign(bg.style, {
-                                        position: 'fixed',
-                                        inset: '0px',
-                                        background: '#ffedcf',
-                                        transformOrigin: 'bottom',
-                                        transform: 'scaleY(0)',
-                                        zIndex: '40',
-                                        pointerEvents: 'none',
-                                    })
-                                    document.body.appendChild(bg)
-
-                                    const overlay =
-                                        document.createElement('img')
-
-                                    overlay.src = project.image
-                                    overlay.alt = project.title
-                                    overlay.setAttribute(
-                                        'data-project-overlay',
-                                        'true'
-                                    )
-                                    overlay.setAttribute(
-                                        'data-project-slug',
-                                        slugify(project.title)
-                                    )
-                                    Object.assign(overlay.style, {
-                                        position: 'fixed',
-                                        top: `${rect.top}px`,
-                                        left: `${rect.left}px`,
-                                        width: `${rect.width}px`,
-                                        height: `${rect.height}px`,
-                                        objectFit: 'cover',
-                                        borderRadius:
-                                            getComputedStyle(img)
-                                                .borderRadius || '12px',
-                                        zIndex: '999',
-                                        imageRendering: 'high-quality',
-                                    })
-                                    document.body.appendChild(overlay)
-
-                                    const maxWidth = Math.min(
-                                        1280,
-                                        window.innerWidth - 48
-                                    )
-                                    const finalHeight = maxWidth * (9 / 16)
-
-                                    const tl = gsap.timeline()
-                                    tl.to(bg, {
-                                        scaleY: 1,
-                                        duration: 0.6,
-                                        ease: 'power3.out',
-                                    }).to(
-                                        overlay,
-                                        {
-                                            top: '50%',
-                                            left: '50%',
-                                            width: maxWidth,
-                                            height: finalHeight,
-                                            x: '-50%',
-                                            y: '-50%',
-                                            duration: 1.0,
-                                            ease: 'power2.out',
-                                            onComplete: () => {
-                                                window.scrollTo(0, 0)
-                                                router.push(
-                                                    `/work/${slugify(project.title)}`
-                                                )
-                                            },
-                                        },
-                                        '-=0.2'
-                                    )
-                                }}
+                                onClick={(e) => navigateWithOverlay(e, project)}
                             >
                                 <div className='relative h-[200px] w-[400px]'>
                                     <ImageHover
@@ -296,73 +281,7 @@ const Curious = () => {
                                     href={`/work/${slugify(project.title)}`}
                                     aria-label={`View ${project.title}`}
                                     className='project-pin-mobile'
-                                    onClick={(e) => {
-                                        e.preventDefault()
-                                        const wrapper =
-                                            e.currentTarget as HTMLAnchorElement
-                                        const img = wrapper.querySelector(
-                                            'img'
-                                        ) as HTMLImageElement | null
-                                        if (!img) {
-                                            window.scrollTo(0, 0)
-                                            router.push(
-                                                `/work/${slugify(project.title)}`
-                                            )
-                                            return
-                                        }
-
-                                        const rect = img.getBoundingClientRect()
-                                        const overlay =
-                                            document.createElement('img')
-
-                                        overlay.src = project.image
-                                        overlay.alt = project.title
-                                        overlay.setAttribute(
-                                            'data-project-overlay',
-                                            'true'
-                                        )
-                                        overlay.setAttribute(
-                                            'data-project-slug',
-                                            slugify(project.title)
-                                        )
-                                        Object.assign(overlay.style, {
-                                            position: 'fixed',
-                                            top: `${rect.top}px`,
-                                            left: `${rect.left}px`,
-                                            width: `${rect.width}px`,
-                                            height: `${rect.height}px`,
-                                            objectFit: 'cover',
-                                            borderRadius:
-                                                getComputedStyle(img)
-                                                    .borderRadius || '12px',
-                                            zIndex: '999',
-                                            imageRendering: 'high-quality',
-                                        })
-                                        document.body.appendChild(overlay)
-
-                                        const maxWidth = Math.min(
-                                            1280,
-                                            window.innerWidth - 48
-                                        )
-                                        const finalHeight = maxWidth * (9 / 16)
-
-                                        gsap.to(overlay, {
-                                            top: '50%',
-                                            left: '50%',
-                                            width: maxWidth,
-                                            height: finalHeight,
-                                            x: '-50%',
-                                            y: '-50%',
-                                            duration: 1.55,
-                                            ease: 'power2.out',
-                                            onComplete: () => {
-                                                window.scrollTo(0, 0)
-                                                router.push(
-                                                    `/work/${slugify(project.title)}`
-                                                )
-                                            },
-                                        })
-                                    }}
+                                    onClick={(e) => navigateWithOverlay(e, project)}
                                 >
                                     <div className='relative aspect-[16/9] w-full overflow-hidden rounded-md'>
                                         <ImageHover
