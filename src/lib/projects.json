@@ -2,6 +2,7 @@
     {
         "title": "aespa.fun",
         "description": "aespa.fun is an interactive web app where users can do quizzes about aespa and collect photocards.",
+        "description2": "Based on the DIVE INTO IVE project, this project is similar but for a different group. The goal for this project was to be more extensive than the IVE one, and include more features. To name a few features: account leveling, photocard collecting and a members page.",
         "image": "/images/projects/aespa-project.png",
         "link": "https://www.aespa.fun",
         "tags": [
@@ -38,7 +39,7 @@
         "description": "Portfolio for Media in the second semester",
         "description2": "The portfolio from my second semester at Fontys University. This portfolio was specifically for teachers. It included all the learning outcomes and evidence for each one of them. My goal was similar to this one, to build a minimalistic, but modern looking portfolio. With the focus mainly being animations by using popular tools like GSAP.",
         "image": "/images/projects/portfolio-project.png",
-        "link": "https://www.portfolio-jarvin.vercel.app",
+        "link": "https://portfolio-jarvin.vercel.app",
         "tags": ["Next.js", "Tailwind CSS", "TypeScript"]
     }
 ]

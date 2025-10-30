@@ -81,7 +81,10 @@ export default function Navbar() {
     }, [isMenuOpen])
 
     return (
-        <nav ref={navbarRef} className={'fixed top-0 right-0 z-[999] md:z-50 p-6'}>
+        <nav
+            ref={navbarRef}
+            className={'fixed top-0 right-0 z-[999] p-6 md:z-50'}
+        >
             <div className='flex items-center justify-between'>
                 <button
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
