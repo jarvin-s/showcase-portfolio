@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
-import { Inter_Tight } from 'next/font/google'
+import { Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/header/navbar'
+import SmoothScrollProvider from '@/components/SmoothScrollProvider'
 
-const inter = Inter_Tight({
+const spaceGrotesk = Space_Grotesk({
     weight: ['400', '500', '600', '700'],
     subsets: ['latin'],
-    variable: '--font-inter',
+    variable: '--font-space-grotesk',
 })
 
 export const metadata: Metadata = {
@@ -21,9 +22,11 @@ export default function RootLayout({
 }>) {
     return (
         <html lang='en' suppressHydrationWarning>
-            <body suppressHydrationWarning className={inter.variable}>
-                <Navbar />
-                {children}
+            <body suppressHydrationWarning className={spaceGrotesk.className}>
+                <SmoothScrollProvider>
+                    <Navbar />
+                    {children}
+                </SmoothScrollProvider>
             </body>
         </html>
     )

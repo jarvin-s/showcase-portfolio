@@ -1,7 +1,26 @@
 @import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
 
 @theme {
     --color-primary: #ffedcf;
+}
+
+@theme inline {
+    --animate-aurora: aurora 60s linear infinite;
+    @keyframes aurora {
+        from {
+            background-position:
+                50% 50%,
+                50% 50%;
+        }
+        to {
+            background-position:
+                350% 50%,
+                350% 50%;
+        }
+    }
 }
 
 html,
@@ -9,10 +28,18 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    overflow: hidden;
     background-color: #0f0301;
 }
 
 * {
     box-sizing: border-box;
+}
+
+.outline-text {
+    -webkit-text-stroke: 1px var(--color-primary);
+    -webkit-text-fill-color: transparent;
+}
+
+.project-image:hover {
+    cursor: none;
 }
