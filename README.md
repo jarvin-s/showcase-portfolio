@@ -30,8 +30,6 @@ Below are some portfolios I used for inspiration:
 - [Wonjyou Studio](https://wonjyou.studio/)
 - [Wonjyou](https://www.wonjyou.com/)
 
-## Iterations
-
 ## Technologies Used
 
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white) 
