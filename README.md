@@ -1,6 +1,5 @@
 
 # Showcase Portfolio - Jarvin Siegers
-Iterations and validation moments
 
 ## Project Goals
 
