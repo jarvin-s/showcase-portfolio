@@ -1,6 +1,27 @@
 
 # Showcase Portfolio - Jarvin Siegers
 
+## Installation
+
+### 1. Clone the repository:
+   ```bash
+   git clone https://github.com/jarvin-s/showcase-portfolio
+   cd showcase-portfolio
+   ```
+
+### 2. Install dependencies
+  ```bash
+  npm install
+  ```
+
+### 3. Start the development server
+  ```bash
+  npm run dev
+  ```
+
+Your app will be available at:
+http://localhost:3000
+
 ## Project Goals
 
 The main idea was to draw inspiration from several award-winning portfolios featured on Awwwards. Many of these sites share common design elements and style choices that give a strong sense of professionalism and experience. My goal is to create something that captures that same impression.
