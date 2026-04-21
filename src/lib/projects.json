@@ -3,11 +3,12 @@
         "title": "aespa.fun",
         "description": "aespa.fun is an interactive web app where users can do quizzes about aespa and collect photocards.",
         "description2": "Based on the DIVE INTO IVE project, this project is similar but for a different group. The goal for this project was to be more extensive than the IVE one, and include more features. To name a few features: account leveling, photocard collecting and a members page.",
+        "disclaimer": "This project is currently under maintenance and some features may not work as expected.",
         "image": "/images/projects/aespa-project.png",
         "link": "https://www.aespa.fun",
         "tags": [
             "Next.js",
-            "Tailwind CSS",
+            "TailwindCSS",
             "shadcn/ui",
             "TypeScript",
             "Supabase"
@@ -20,7 +21,7 @@
         "link": "https://www.diveintoive.world",
         "tags": [
             "Next.js",
-            "Tailwind CSS",
+            "TailwindCSS",
             "shadcn/ui",
             "TypeScript",
             "Supabase"
@@ -32,14 +33,14 @@
         "description2": "A good friend of mine and I got together and built the first version in a week. We are currently working on an unlimited game mode where users can keep guessing idols instead of doing one per day.",
         "image": "/images/projects/idolguessr-project.png",
         "link": "https://www.idolguessr.fun",
-        "tags": ["Next.js", "Tailwind CSS", "TypeScript", "Supabase"]
+        "tags": ["Next.js", "TailwindCSS", "TypeScript", "Supabase"]
     },
     {
-        "title": "Portfolio Media S2",
-        "description": "Portfolio for Media in the second semester",
-        "description2": "The portfolio from my second semester at Fontys University. This portfolio was specifically for teachers. It included all the learning outcomes and evidence for each one of them. My goal was similar to this one, to build a minimalistic, but modern looking portfolio. With the focus mainly being animations by using popular tools like GSAP.",
-        "image": "/images/projects/portfolio-project.png",
-        "link": "https://portfolio-jarvin.vercel.app",
-        "tags": ["Next.js", "Tailwind CSS", "TypeScript"]
+        "title": "striempie",
+        "description": "Personal alternative to streamable.com",
+        "description2": "If you're not familiar with streamable, it's a platform where you can upload videos and share them with others. On streamable, without a subscription, videos eventually get deleted. I built this project as an alternative to streamable, so uploaded videos won't get deleted.",
+        "image": "/images/projects/striempie-project.png",
+        "link": "https://striempie.nl",
+        "tags": ["Next.js", "TailwindCSS", "TypeScript", "Firebase"]
     }
 ]

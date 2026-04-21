@@ -14,6 +14,7 @@ const anton = Anton({
 export default function Hero() {
     const firstNameRef = useRef(null)
     const lastNameRef = useRef(null)
+    const subtitleRef = useRef(null)
     const animationRef = useRef<gsap.Context | null>(null)
 
     useEffect(() => {
@@ -61,6 +62,20 @@ export default function Hero() {
                 },
                 '<'
             )
+
+            tl.fromTo(
+                subtitleRef.current,
+                {
+                    opacity: 0,
+                },
+                {
+                    opacity: 1,
+                    duration: 1.5,
+                    ease: 'easeInOut',
+                    delay: 0.75
+                },
+                '<'
+            )
         })
 
         return () => {
@@ -76,7 +91,7 @@ export default function Hero() {
                 <div className='relative h-screen'>
                     <div className='z-10 flex h-full w-full flex-col items-center justify-center'>
                         <div
-                            className={`text-primary relative text-[120px] md:text-[20vw] ${anton.className} flex flex-col items-center justify-center text-center leading-[0.88] uppercase`}
+                            className={`text-primary relative text-[120px] md:text-[16vw] ${anton.className} flex flex-col items-center justify-center text-center leading-[0.88] uppercase`}
                         >
                             <span ref={firstNameRef} style={{ opacity: 0 }}>
                                 Jarvin
@@ -84,6 +99,11 @@ export default function Hero() {
                             <span ref={lastNameRef} style={{ opacity: 0 }}>
                                 Siegers
                             </span>
+                        </div>
+                        <div className='mt-4'>
+                            <h1 ref={subtitleRef} style={{ opacity: 0}} className='lowercase text-primary text-4xl font-extralight italic'>
+                                A Frontend Developer
+                            </h1>
                         </div>
                     </div>
                 </div>
