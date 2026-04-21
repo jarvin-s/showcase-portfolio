@@ -74,6 +74,7 @@ export default function Navbar() {
                 onComplete: () => {
                     if (menuRef.current) {
                         ;(menuRef.current as HTMLElement).style.display = 'none'
+                   
                     }
                 },
             })

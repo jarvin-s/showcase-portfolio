@@ -79,9 +79,9 @@ const Contact = () => {
                 >
                     Connect with me on{' '}
                     <Link
-                        href='https://www.linkedin.com/in/jarvin-siegers/'
+                        href='https://www.linkedin.com/in/jarvin/'
                         target='_blank'
-                        className='underline'
+                        className='underline text-primary'
                     >
                         LinkedIn
                     </Link>

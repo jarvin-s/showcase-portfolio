@@ -12,6 +12,7 @@ type Project = {
     title: string
     description: string
     description2: string
+    disclaimer?: string
     image: string
     link: string
     tags: string[]
@@ -195,7 +196,7 @@ export default function ProjectPage({
     }
 
     return (
-        <section ref={containerRef} className='mx-auto max-w-6xl px-6 py-16'>
+        <section ref={containerRef} className='mx-auto max-w-6xl py-16'>
             <div className='mt-6 flex flex-col items-start gap-8'>
                 <div
                     ref={imageRef}
@@ -206,11 +207,12 @@ export default function ProjectPage({
                         src={project.image}
                         alt={project.title}
                         fill
-                        className='rounded-md'
                         movementIntensity={20}
+                        cursorFollow
+                        cursorFollowMaxWidthPx={240}
                     />
                 </div>
-                <div>
+                <div className='max-w-3xl mx-auto'>
                     <h1
                         ref={titleRef}
                         className='project-title text-primary text-4xl font-extrabold'
@@ -232,6 +234,11 @@ export default function ProjectPage({
                     >
                         {project.description2}
                     </p>
+                    {project.disclaimer && (
+                        <p className='project-disclaimer mt-3 text-lg text-white/80 italic'>
+                            <span className='font-bold'>Disclaimer:</span> {project.disclaimer}
+                        </p>
+                    )}
                     <div ref={tagsRef} className='mt-4 flex flex-wrap gap-2'>
                         {project.tags.map((t) => (
                             <span
@@ -252,7 +259,7 @@ export default function ProjectPage({
                             className='project-button bg-primary hover:bg-primary/90 inline-block rounded-full px-4 py-2 text-xl text-black'
                             style={{ opacity: 0 }}
                         >
-                            Visit project
+                            Live demo
                         </a>
                     </div>
                 </div>

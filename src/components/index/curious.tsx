@@ -201,7 +201,7 @@ const Curious = () => {
                                         alt={project.title}
                                         width={400}
                                         height={400}
-                                        className='project-image rounded-md object-cover'
+                                        className='project-image object-cover'
                                         movementIntensity={20}
                                         priority={i === 0}
                                     />
@@ -283,12 +283,12 @@ const Curious = () => {
                                     className='project-pin-mobile'
                                     onClick={(e) => navigateWithOverlay(e, project)}
                                 >
-                                    <div className='relative aspect-[16/9] w-full overflow-hidden rounded-md'>
+                                    <div className='relative aspect-[16/9] w-full overflow-hidden'>
                                         <ImageHover
                                             src={project.image}
                                             alt={project.title}
                                             fill
-                                            className='project-image rounded-md object-cover'
+                                            className='project-image object-cover'
                                             movementIntensity={20}
                                             priority={i === 0}
                                         />
