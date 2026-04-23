@@ -30,7 +30,7 @@
     {
         "title": "IdolGuessr",
         "description": "Guess the Idol - A fun web game where K-pop fans test their knowledge by guessing idols from pixelated photos. A very recent project that started from another pixelated photo guessing game called Nearsight (nearsight.cc).",
-        "description2": "A good friend of mine and I got together and built the first version in a week. We are currently working on an unlimited game mode where users can keep guessing idols instead of doing one per day.",
+        "description2": "A good friend of mine and I got together and built the first version in a week. Currently there are multiple gamemodes available, such as daily, unlimited, hangul and challenge mode.",
         "image": "/images/projects/idolguessr-project.png",
         "link": "https://www.idolguessr.fun",
         "tags": ["Next.js", "TailwindCSS", "TypeScript", "Supabase"]

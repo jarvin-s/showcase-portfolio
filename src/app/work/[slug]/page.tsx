@@ -29,6 +29,7 @@ export default function ProjectPage({
     const titleRef = useRef<HTMLHeadingElement | null>(null)
     const descriptionRef = useRef<HTMLParagraphElement | null>(null)
     const description2Ref = useRef<HTMLParagraphElement | null>(null)
+    const disclaimerRef = useRef<HTMLParagraphElement | null>(null)
     const tagsRef = useRef<HTMLDivElement | null>(null)
     const buttonRef = useRef<HTMLAnchorElement | null>(null)
     const animationRef = useRef<gsap.Context | null>(null)
@@ -110,6 +111,7 @@ export default function ProjectPage({
                     titleRef.current,
                     descriptionRef.current,
                     description2Ref.current,
+                    disclaimerRef.current,
                     buttonRef.current,
                 ],
                 { opacity: 0 }
@@ -119,6 +121,8 @@ export default function ProjectPage({
                 gsap.set(descriptionRef.current, { y: 20 })
             if (description2Ref.current)
                 gsap.set(description2Ref.current, { y: 20 })
+            if (disclaimerRef.current)
+                gsap.set(disclaimerRef.current, { y: 20 })
             if (tagsRef.current)
                 gsap.set(tagsRef.current.querySelectorAll('.project-tag'), {
                     opacity: 0,
@@ -154,6 +158,11 @@ export default function ProjectPage({
                     .to(
                         description2Ref.current,
                         { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
+                        '-=0.35'
+                    )
+                    .to(
+                        disclaimerRef.current,
+                        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' },
                         '-=0.35'
                     )
                     .to(
@@ -235,7 +244,11 @@ export default function ProjectPage({
                         {project.description2}
                     </p>
                     {project.disclaimer && (
-                        <p className='project-disclaimer mt-3 text-lg text-white/80 italic'>
+                        <p
+                        ref={disclaimerRef}
+                         className='project-disclaimer mt-3 text-lg text-white/80 italic'
+                         style={{ opacity: 0 }}
+                         >
                             <span className='font-bold'>Disclaimer:</span> {project.disclaimer}
                         </p>
                     )}
